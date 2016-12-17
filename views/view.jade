@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    style.
+      table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      }
+      th, td {
+      padding: 15px;
+      }
+  body
+    p
+      |Schedule Table
+    table(style="")
+      thead
+        tr
+          th #
+          th DATE
+          th TIME
+          th WHAT
+          th WHERE
+          th WITH
+          th UNTIL
+          th TEMPARATURE
+          th WEATHER
+          th FINISHED
+      tbody
+        -var ob = JSON.parse(data)
+        -for(var prop in ob)
+          tr
+            th(scope='row') #{prop}
+            td #{ob[prop].DATE}
+            td #{ob[prop].TIME}
+            td #{ob[prop].WHATDATA}
+            td #{ob[prop].WHEREDATA}
+            td #{ob[prop].WITHDATA}
+            td #{ob[prop].UNTILDATA}
+            td #{ob[prop].TEMPDATA}
+            td #{ob[prop].SUMDATA}
+            td #{ob[prop].FINISHED}
+    p
+      |WHATDATA <==> Temp Relation Table
+    table(style="")
+              thead
+                tr
+                  th #
+                  th WHATDATA
+                  th ~-1
+                  th 0~4
+                  th 5~9
+                  th 10~14
+                  th 15~19
+              tbody
+                -var ob2 = JSON.parse(data2)
+                -for(var prop in ob2)
+                  tr
+                    th(scope='row') #{prop}
+                    td #{ob2[prop].WHATDATA}
+                    td #{ob2[prop].TEMPMINUS}
+                    td #{ob2[prop].TEMP0005}
+                    td #{ob2[prop].TEMP0510}
+                    td #{ob2[prop].TEMP1015}
+                    td #{ob2[prop].TEMP1520}
